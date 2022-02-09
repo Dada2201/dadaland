@@ -1,4 +1,6 @@
-mysqlHost="server ip"
-mysqlPort="3306"
-mysqlUser="user"
-mysqlPassword="password"
+module.exports = {
+'mysqlHost':"xxx.xxx.xxx.xxx",
+'mysqlPort':"3306",
+'mysqlUser':"xxx",
+'mysqlPassword':"**********"
+}

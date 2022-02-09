@@ -1,4 +1,6 @@
 // Use Express
+var config = require('./config');
+
 var express = require("express");
 // Use body-parser
 var bodyParser = require("body-parser");
@@ -10,10 +12,10 @@ var mysql = require('mysql2'); // import mysql module
 
 // setup database
 db = mysql.createConnection({
-    host: 'xxx',
-    port: '3306',
-    user: 'xxx',
-    password: 'xxx',
+    host: process.env.MYSQLHOST || config.mysqlHost,
+    port: process.env.MYSQLPORT || config.mysqlPort,
+    user: process.env.MYSQLUSER || config.mysqlUser,
+    password: process.env.MYSQLPASSWORD || config.mysqlPassword,
     database: 'reposgit',
     insecureAuth : true
   })
