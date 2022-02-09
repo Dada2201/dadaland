@@ -1,0 +1,4 @@
+mysqlHost="server ip"
+mysqlPort="3306"
+mysqlUser="user"
+mysqlPassword="password"
