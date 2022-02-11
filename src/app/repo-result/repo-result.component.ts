@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StatusService } from '../shared/status.service';
+import { first } from 'rxjs/operators'
 
 @Component({
   selector: 'app-repo-result',
@@ -22,12 +23,13 @@ export class RepoResultComponent implements OnInit {
 
   get status() { return (this.apiStatus && this.apiStatus.status) ? this.apiStatus.status : null }
 
-  randomRepo(){
+  randomRepo() {
     this.statusService
-    .getRepo()
-    .subscribe( 
-      res =>{
-      this.randomrepo = res
-    })
+      .getRepo()
+      .pipe(first())
+      .subscribe(
+        res => {
+          this.randomrepo = res
+        })
   }
 }
