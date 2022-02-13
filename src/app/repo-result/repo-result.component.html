@@ -1,11 +1,23 @@
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/placeholder-loading/dist/css/placeholder-loading.min.css">
+</head>
+<button (click)="randomRepo();togglePanel();">Show me more !</button>
+
 <div *ngIf="randomrepo"> 
     <h1>{{randomrepo[0].name}} ({{randomrepo[0].stargazers_count}})</h1>
     <h3>{{randomrepo[0].description}}</h3>
     <h2><a target="_blank" href="{{randomrepo[0].svn_url}}">{{randomrepo[0].name}}</a></h2>
     <!--<img [src]="getAvatar(randomrepo[0].owner.avatar_url)" alt="Avatar">-->
+    <mat-expansion-panel [togglePosition]="'before'" [(expanded)]="panelOpenState">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            See README.md
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div markdown [src]="buildReadMe()"></div>
+      </mat-expansion-panel>
 </div>
 
-<button (click)="randomRepo()">Show me more !</button>
 
 <nav>
     <ul>

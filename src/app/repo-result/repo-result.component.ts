@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { StatusService } from '../shared/status.service';
 import { first } from 'rxjs/operators'
+import { StatusService } from '../shared/status.service';
 import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
 
@@ -12,6 +13,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class RepoResultComponent implements OnInit {
   apiStatus: any;
   randomrepo: any;
+  panelOpenState: boolean = false;
 
   constructor(
     private statusService: StatusService,
@@ -25,12 +27,19 @@ export class RepoResultComponent implements OnInit {
         this.apiStatus = response;
       })
 
-      this.randomRepo()
+    this.randomRepo()
   }
 
   get status() { return (this.apiStatus && this.apiStatus.status) ? this.apiStatus.status : null }
 
-  randomRepo() {
+  togglePanel() {
+    if(this.panelOpenState == true){
+      this.panelOpenState = !this.panelOpenState
+    }
+
+  }
+
+   randomRepo() {
     this.statusService
       .getRepo()
       .pipe(first())
@@ -43,4 +52,9 @@ export class RepoResultComponent implements OnInit {
   getAvatar(url : string) {
     return this.sanitazer.bypassSecurityTrustResourceUrl(url);
   }
-}
+
+  buildReadMe() : string{
+    // Example of README url : https://raw.githubusercontent.com/LumingSun/ML4DB-paper-list/master/README.md
+    return "https://raw.githubusercontent.com/"+this.randomrepo[0].full_name+"/master/README.md"
+  }
+} 
