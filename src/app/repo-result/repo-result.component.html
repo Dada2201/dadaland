@@ -1,6 +1,9 @@
-Random repo works !
-
-Here : {{randomrepo | json}}
+<div *ngIf="randomrepo"> 
+    <h1>{{randomrepo[0].name}} ({{randomrepo[0].stargazers_count}})</h1>
+    <h3>{{randomrepo[0].description}}</h3>
+    <h2><a target="_blank" href="{{randomrepo[0].svn_url}}">{{randomrepo[0].name}}</a></h2>
+    <!--<img [src]="getAvatar(randomrepo[0].owner.avatar_url)" alt="Avatar">-->
+</div>
 
 <button (click)="randomRepo()">Show me more !</button>
 
