@@ -2,25 +2,52 @@
   <link rel="stylesheet" href="https://unpkg.com/placeholder-loading/dist/css/placeholder-loading.min.css">
 </head>
 
-<div *ngIf="randomrepo">
-  <h1>{{randomrepo[0].name}} ({{randomrepo[0].stargazers_count}})</h1>
-  <h3>{{randomrepo[0].description}}</h3>
-  <h2><a target="_blank" href="{{randomrepo[0].svn_url}}">{{randomrepo[0].name}}</a></h2>
-  <!--<img [src]="getAvatar(randomrepo[0].owner.avatar_url)" alt="Avatar">-->
-  <mat-expansion-panel [togglePosition]="'before'" [(expanded)]="panelOpenState">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        See README.md
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div markdown [src]="buildReadMe()"></div>
-  </mat-expansion-panel>
-  <button (click)="randomRepo();togglePanel();">Show me more !</button>
+<div class="randomrepo" *ngIf="randomrepo">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="zapette" >
+          Minimum no of stars
+          Language
+          Reset Filters
+          Search
+        </div>
+      </div>
+      <div class="col-12 col-md-8 px-0 mt-3 mt-md-0">
+        <div class="repo_details d-flex flex-column">
+            <div class="row mb-2">
+                <h1><a style="text-decoration: none;" target="_blank" href="{{randomrepo[0].svn_url}}">{{randomrepo[0].owner.login}} / <strong>{{randomrepo[0].name}}</strong></a></h1>
+            </div>
+            <div class="row mb-2">
+                <h2>{{randomrepo[0].language}}</h2>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2>{{randomrepo[0].stargazers_count}} <mat-icon style="vertical-align:sub;">star</mat-icon> / {{randomrepo[0].forks}} <mat-icon style="vertical-align:sub;">fork_right</mat-icon></h2>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                  <h3>{{randomrepo[0].description}}</h3>
+                  <!--<img [src]="getAvatar(randomrepo[0].owner.avatar_url)" alt="Avatar">-->
+                  <div style="margin-top: 20px;" class="d-flex p-2"></div>
+                </div>
+            </div>
+            <div class="row flex-grow-1">
+                <div class="col-12 text-center mt-auto">
+                  <mat-expansion-panel class="readme-panel" [togglePosition]="'before'" [(expanded)]="panelOpenState">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        See README.md
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div markdown [src]="buildReadMe()"></div>
+                  </mat-expansion-panel>
+                  <button class="random-button" (click)="randomRepo();togglePanel();"><mat-icon style="vertical-align:sub;">refresh</mat-icon>Another one</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+  </div>
 </div>
-
-
-<nav>
-  <ul>
-    <li><a routerLink="" routerLinkActive="active">Go to => home</a></li>
-  </ul>
-</nav>

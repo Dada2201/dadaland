@@ -2,3 +2,57 @@ img {
     border-radius: 50%;
   }
   
+.repo_details{
+    text-align: center;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    height: 100%;
+    padding-bottom: 15px;
+    padding-top: 10px;
+    margin-top: 100px;
+}
+
+.zapette{
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  height: 100%;
+  padding-bottom: 15px;
+  padding-top: 10px;
+  margin-top: 100px;
+}
+
+.readme-panel{
+  width: 80%;
+  margin-left:auto;
+  margin-right:auto;
+  max-height: 30vh;
+    
+  &.mat-expanded{
+    max-height: 30vh;
+    overflow: auto;
+  }
+}
+
+.random-button{
+    color: #ffffff;
+    background-color: #729CC9;
+    font-size: 18px;
+    border: 2px solid #8ab0da;
+    border-radius: 15px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer
+}
+
+.random-button:hover {
+  color: #ffffff;
+  background-color:#0957CA;
+} 

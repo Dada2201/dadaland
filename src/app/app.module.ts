@@ -9,11 +9,14 @@ import { RepoResultComponent } from './repo-result/repo-result.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatIconModule} from '@angular/material/icon'
+import { MotusComponent } from './motus/motus.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RepoResultComponent
+    RepoResultComponent,
+    MotusComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     AppRoutingModule,
     MarkdownModule.forRoot(({ loader: HttpClient })),
     BrowserAnimationsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
